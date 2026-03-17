@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Example Flask Terminal</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <main class="terminal-shell">
+            <div class="terminal-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <p class="terminal-title">hello-session</p>
+            </div>
+
+            <section class="terminal-screen">
+                <p class="line"><span class="prompt">visitor@flask:~$</span> ./hello {{ user.name|lower }} {{ user.last_name|lower }}</p>
+
+                <img class="terminal-logo" src="{{ url_for('static', filename='logo.jpg') }}" alt="Flask logo">
+
+                <h1>HELLO WORLD {{ user.name.upper() }} {{ user.last_name.upper() }}</h1>
+
+                {% if user.name == "luis" %}
+                    <p class="terminal-badge">OHHH ITS YOU AGAIN</p>
+                {% else %}
+                    <p class="terminal-badge">NICE TO SEE YOU AGAIN</p>
+                {% endif %}
+
+                <div class="command-list">
+                    <p><span class="prompt">visitor@flask:~$</span> cat shopping_list.txt</p>
+                    <p class="response">This is your shopping list</p>
+                    <ul class="terminal-list">
+                    {% for item in shopping_list %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

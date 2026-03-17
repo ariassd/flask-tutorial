@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="terminal-shell">
+        <div class="terminal-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <p class="terminal-title">bmi-calculator</p>
+        </div>
+
+        <section class="terminal-screen">
+            <p class="line"><span class="prompt">visitor@flask:~$</span> python bmi_calc.py</p>
+            <h1>BMI CALCULATOR</h1>
+            <p class="line muted">Enter your height in meters and mass in kilograms.</p>
+
+            <form class="terminal-form" action="{{ url_for('bim_calc') }}" method="post">
+                <label class="terminal-label" for="height">Height</label>
+                <input class="terminal-input" id="height" type="text" name="height" placeholder="1.75" required>
+
+                <label class="terminal-label" for="mass">Mass</label>
+                <input class="terminal-input" id="mass" type="text" name="mass" placeholder="70" required>
+
+                <button class="terminal-button" type="submit">Run calculation</button>
+            </form>
+
+            {% if bmi %}
+                <div class="command-list">
+                    <p><span class="prompt">visitor@flask:~$</span> cat bmi_result.txt</p>
+                    <p class="response">Your BMI is: {{ "%.2f"|format(bmi) }}</p>
+
+                    {% if bmi < 18.5 %}
+                        <p class="response">Category: <strong>Underweight</strong></p>
+                    {% elif bmi < 25 %}
+                        <p class="response">Category: <strong>Healthy weight</strong></p>
+                    {% elif bmi < 30 %}
+                        <p class="response">Category: <strong>Overweight</strong></p>
+                    {% else %}
+                        <p class="response">Category: <strong>Obese</strong></p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

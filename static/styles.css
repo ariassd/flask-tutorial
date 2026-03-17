@@ -1,0 +1,231 @@
+:root {
+    --bg: #08110d;
+    --panel: #0f1b15;
+    --panel-border: #1f392d;
+    --text: #d8ffe4;
+    --muted: #85b396;
+    --accent: #5bff98;
+    --accent-soft: rgba(91, 255, 152, 0.14);
+    --shadow: rgba(0, 0, 0, 0.45);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background:
+        radial-gradient(circle at top, rgba(91, 255, 152, 0.08), transparent 35%),
+        linear-gradient(180deg, #0b1510 0%, #040806 100%);
+    color: var(--text);
+    font-family: "Fira Code", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.link {
+  padding: 0.3em 1em;
+  background-color: var(--muted);;
+  color: #fff;
+
+}
+
+
+.terminal-shell {
+    width: min(860px, 100%);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--panel);
+    box-shadow: 0 24px 60px var(--shadow);
+}
+
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--panel-border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.terminal-title {
+    margin: 0 0 0 8px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red {
+    background: #ff5f56;
+}
+
+.dot-yellow {
+    background: #ffbd2e;
+}
+
+.dot-green {
+    background: #27c93f;
+}
+
+.terminal-screen {
+    padding: 28px 24px 32px;
+    position: relative;
+}
+
+.terminal-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.02) 0,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    opacity: 0.14;
+    pointer-events: none;
+}
+
+h1 {
+    margin: 18px 0 14px;
+    font-size: clamp(2rem, 6vw, 4.2rem);
+    line-height: 1;
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(91, 255, 152, 0.25);
+}
+
+.line,
+.command-list p {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.prompt {
+    color: var(--accent);
+}
+
+.muted,
+.response,
+.terminal-title {
+    color: var(--muted);
+}
+
+.command-list {
+    margin-top: 26px;
+    padding: 18px;
+    border: 1px solid rgba(91, 255, 152, 0.18);
+    border-radius: 14px;
+    background: var(--accent-soft);
+}
+
+.terminal-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    margin: 10px 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(91, 255, 152, 0.25);
+    box-shadow: 0 0 18px rgba(91, 255, 152, 0.15);
+}
+
+.terminal-badge {
+    display: inline-block;
+    margin: 0 0 18px;
+    padding: 8px 12px;
+    border: 1px solid rgba(91, 255, 152, 0.2);
+    border-radius: 999px;
+    background: rgba(91, 255, 152, 0.1);
+    color: var(--accent);
+    font-size: 0.95rem;
+}
+
+.terminal-list {
+    margin: 10px 0 0;
+    padding-left: 20px;
+    color: var(--text);
+}
+
+.terminal-list li {
+    margin-bottom: 8px;
+}
+
+.terminal-form {
+    margin-top: 24px;
+    display: grid;
+    gap: 12px;
+}
+
+.terminal-label {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.terminal-input,
+.terminal-button {
+    width: 100%;
+    border-radius: 12px;
+    font: inherit;
+}
+
+.terminal-input {
+    padding: 14px 16px;
+    border: 1px solid rgba(91, 255, 152, 0.22);
+    background: rgba(0, 0, 0, 0.22);
+    color: var(--text);
+    outline: none;
+}
+
+.terminal-input::placeholder {
+    color: #6d8f79;
+}
+
+.terminal-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(91, 255, 152, 0.12);
+}
+
+.terminal-button {
+    margin-top: 8px;
+    padding: 14px 16px;
+    border: 1px solid rgba(91, 255, 152, 0.3);
+    background: linear-gradient(180deg, rgba(91, 255, 152, 0.2), rgba(91, 255, 152, 0.08));
+    color: var(--accent);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.terminal-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(91, 255, 152, 0.5);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 14px;
+    }
+
+    .terminal-screen {
+        padding: 22px 16px 24px;
+    }
+
+    .line,
+    .command-list p {
+        font-size: 0.95rem;
+    }
+}
