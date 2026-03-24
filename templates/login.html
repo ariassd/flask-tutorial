@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Flask Terminal</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <main class="terminal-shell">
+            <div class="terminal-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <p class="terminal-title">login-session</p>
+            </div>
+
+            <section class="terminal-screen">
+                <p class="line"><span class="prompt">visitor@flask:~$</span> login</p>
+
+                <img class="terminal-logo" src="{{ url_for('static', filename='logo.jpg') }}" alt="Flask logo">
+
+                <h1>ACCESS GRANTED</h1>
+
+                {% if error %}
+                    <p class="terminal-badge terminal-error">{{ error }}</p>
+                {% else %}
+                    <p class="terminal-badge">PLEASE LOG IN</p>
+                {% endif %}
+
+                <form class="terminal-form" method="POST" action="{{ url_for('login') }}">
+                    <label for="username" class="terminal-label">Username:</label>
+                    <input type="text" id="username" name="username" class="terminal-input" placeholder="Enter your username" required>
+
+                    <label for="password" class="terminal-label">Password:</label>
+                    <input type="password" id="password" name="password" value="123" class="terminal-input" placeholder="Enter your password" required>
+
+                    <button type="submit" class="terminal-button">LOGIN</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

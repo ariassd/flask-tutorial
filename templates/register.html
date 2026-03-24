@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register - Flask Terminal</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <main class="terminal-shell">
+            <div class="terminal-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <p class="terminal-title">register-session</p>
+            </div>
+
+            <section class="terminal-screen">
+                <p class="line"><span class="prompt">visitor@flask:~$</span> register</p>
+
+                <img class="terminal-logo" src="{{ url_for('static', filename='logo.jpg') }}" alt="Flask logo">
+
+                <h1>CREATE ACCOUNT</h1>
+
+                {% if error %}
+                    <p class="terminal-badge terminal-error">{{ error }}</p>
+                {% else %}
+                    <p class="terminal-badge">SIGN UP</p>
+                {% endif %}
+
+                <form class="terminal-form" method="POST" action="{{ url_for('register') }}">
+                    <label for="username" class="terminal-label">Username:</label>
+                    <input type="text" id="username" name="username" class="terminal-input" placeholder="Choose a username" required>
+
+                    <label for="password" class="terminal-label">Password:</label>
+                    <input type="password" id="password" name="password" class="terminal-input" placeholder="Create a password" required>
+                    
+                    <label for="confirm_password" class="terminal-label">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="terminal-input" placeholder="Confirm your password" required>
+
+                    <button type="submit" class="terminal-button">REGISTER</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

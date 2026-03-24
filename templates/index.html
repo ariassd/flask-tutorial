@@ -17,7 +17,7 @@
 
             <section class="terminal-screen">
                 <p class="line"><span class="prompt">visitor@flask:~$</span> ./start_app</p>
-                <h1>HELLO WORLD</h1>
+                <h1>HELLO {{ username.upper() if  username else "WORLD" }}</h1>
                 <p class="line muted">Status: server online</p>
                 <p class="line">Welcome to your dark-mode Flask terminal demo.</p>
 

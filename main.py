@@ -9,6 +9,21 @@ app = Flask(__name__, template_folder=str(BASE_DIR / 'templates'))
 def index():
     return render_template('index.html')
 
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        user = request.form['username']
+        return redirect(url_for('index'))
+        # return redirect(url_for('/', username = user))
+        # return render_template('index.html', username=user)
+    else:
+        return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
+
+
 @app.route('/author')
 def author():
     return 'author page'
