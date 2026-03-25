@@ -1,10 +1,17 @@
+import os
 from pathlib import Path
 
 from flask import Flask, redirect, render_template, request, url_for
+from werkzeug.utils import secure_filename  # Import secure_filename for safe filenames
 
 BASE_DIR = Path(__file__).resolve().parent
 
 app = Flask(__name__, template_folder=str(BASE_DIR / 'templates'))
+
+UPLOAD_FOLDER = BASE_DIR / 'uploads'
+if not UPLOAD_FOLDER.exists():
+    UPLOAD_FOLDER.mkdir()
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @app.route('/')
@@ -72,8 +79,21 @@ def bim_calc():
         return render_template('bmi.html')
 
 
-def idata():
-    return 'hello'
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return redirect(url_for('success', filename=filename))
+    else:
+        return render_template('upload.html')
+
+
+@app.route('/success')
+def success():
+    filename = request.args.get('filename')
+    return f'File {filename} uploaded successfully!'
 
 
 if __name__ == '__main__':

@@ -1,3 +1,37 @@
-.venv
-__pycache__
-.ruff_cache
+# --- Python Bytecode & Cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.black_cache/
+uploads
+
+# --- Virtual Environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Environment Variables & Secrets ---
+.env
+.flaskenv
+*.env
+auth.json
+secrets.py
+
+# --- IDE & Editor Settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Distribution / Packaging ---
+dist/
+build/
+*.egg-info/
+
+# --- Flask / Database specifics ---
+instance/
+*.db
+*.sqlite
