@@ -64,3 +64,17 @@ http://127.0.0.1:5000/hello/luis/perez
 http://127.0.0.1:5000/goodby/luis/perez
 http://127.0.0.1:5000/bmi-calc
 ```
+
+## Setup ruff formatter
+Extension charliermarsh.ruff
+https://medium.com/@amjadraza24/ruff-tutorial-a-complete-guide-for-python-developers-1aa62272596d
+
+```bash
+ruff format --check main.py
+
+ruff check .
+
+ruff check --fix
+
+``` 
+
