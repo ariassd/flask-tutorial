@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, make_response
 from werkzeug.utils import secure_filename  # Import secure_filename for safe filenames
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -16,16 +16,22 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    username = request.cookies.get('username')
+    return render_template('index.html', username=username)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # user = request.form["username"]
-        return redirect(url_for('index'))
-        # return redirect(url_for('/', username = user))
-        # return render_template('index.html', username=user)
+        user = request.form['username']
+
+        # Create a response object for the redirect
+        response = make_response(redirect(url_for('index')))
+
+        # Set the 'username' cookie
+        response.set_cookie('username', user)
+
+        return response
     else:
         return render_template('login.html')
 
