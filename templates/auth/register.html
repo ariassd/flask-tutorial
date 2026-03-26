@@ -28,7 +28,7 @@
                     <p class="terminal-badge">SIGN UP</p>
                 {% endif %}
 
-                <form class="terminal-form" method="POST" action="{{ url_for('register') }}">
+                <form class="terminal-form" method="POST" action="{{ url_for('auth.register') }}">
                     <label for="username" class="terminal-label">Username:</label>
                     <input type="text" id="username" name="username" class="terminal-input" placeholder="Choose a username" required>
 

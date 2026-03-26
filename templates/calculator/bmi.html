@@ -20,7 +20,7 @@
             <h1>BMI CALCULATOR</h1>
             <p class="line muted">Enter your height in meters and mass in kilograms.</p>
 
-            <form class="terminal-form" action="{{ url_for('bim_calc') }}" method="post">
+            <form class="terminal-form" action="{{ url_for('calculator.bmicalc') }}" method="post">
                 <label class="terminal-label" for="height">Height</label>
                 <input class="terminal-input" id="height" type="text" name="height" placeholder="1.75" required>
 

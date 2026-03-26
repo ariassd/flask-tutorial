@@ -29,7 +29,7 @@
                     <p class="terminal-badge">PLEASE LOG IN</p>
                 {% endif %}
 
-                <form class="terminal-form" method="POST" action="{{ url_for('login') }}">
+                <form class="terminal-form" method="POST" action="{{ url_for('auth.login') }}">
                     <label for="username" class="terminal-label">Username:</label>
                     <input type="text" id="username" name="username" class="terminal-input" placeholder="Enter your username" required>
 
